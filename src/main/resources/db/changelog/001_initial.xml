@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="001001" author="varesh">
+        <createTable tableName="user">
+            <column name="id" type="long"></column>
+            <column name="age" type="long"></column>
+            <column name="name" type="varchar(50)"></column>
+        </createTable>
+    </changeSet>
+    <changeSet id="001002" author="ingenico">
+        <insert tableName="user">
+            <column name="id" value="101"></column>
+            <column name="age" value="12"></column>
+            <column name="name" value="john"></column>
+        </insert>
+        <rollback>
+            delete from user where id=101;
+        </rollback>
+    </changeSet>
+    <!--<changeSet id="001003" author="ingenico">-->
+        <!--<insert tableName="user">-->
+            <!--<column name="id" value="102"></column>-->
+            <!--<column name="age" value="24"></column>-->
+            <!--<column name="name" value="Mark"></column>-->
+        <!--</insert>-->
+    <!--</changeSet>-->
+</databaseChangeLog>
